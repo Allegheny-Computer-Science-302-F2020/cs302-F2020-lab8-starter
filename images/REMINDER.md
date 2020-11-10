@@ -1,2 +1,2 @@
-TODO: Please add to this directory all of the country image files that
-you need to correctly complete this assignment.
+TODO: Please include a screenshot of your final web site in this directory. The
+name of your file should be `javascript_submission.png`.
