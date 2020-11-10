@@ -1,0 +1,76 @@
+---
+name: cs302-F2020-lab8
+break: true
+indent: 4
+---
+
+# Learn more about GatorGrader and its supported checks by visiting this web site:
+# https://github.com/GatorEducator/gatorgrader
+
+# Explanation:
+# --> a check without an "--exact" runs a count for an entity as an "at least"
+# --> checks below a file in a specified directory are for that specific file and directory
+# --> checks that appear stand-alone are for an entire Git repository
+
+# --> check the main index.html file
+src/www/:
+    index.html:
+        ConfirmFileExists
+        MatchFileFragment --fragment "<html>" --count 1
+        MatchFileFragment --fragment "<head>" --count 1
+        MatchFileFragment --fragment "<title>Flags of the World</title>" --count 1
+        MatchFileFragment --fragment "<body>" --count 1
+        MatchFileFragment --fragment "country.js" --count 1
+        MatchFileFragment --fragment "Add Your Name Here" --count 0 --exact
+        MatchFileFragment --fragment "TODO" --count 0 --exact
+
+# --> check a JavaScript file
+src/www/js:
+    country.js:
+        ConfirmFileExists
+
+# --> check the images that must be added from GitHub repository
+src/www/img/flags:
+    bs.png:
+        ConfirmFileExists
+
+# --> check the images that must be added from GitHub repository
+src/www/img/flags:
+    ca.png:
+        ConfirmFileExists
+
+# --> check the images that must be added from GitHub repository
+src/www/img/flags:
+    de.png:
+        ConfirmFileExists
+
+# --> check the images that must be added from GitHub repository
+src/www/img/flags:
+    es.png:
+        ConfirmFileExists
+
+# --> check the images that must be added from GitHub repository
+src/www/img/flags:
+    gb.png:
+        ConfirmFileExists
+
+# --> check the existence of web page screenshots
+images/javascript_submission.png:
+    ConfirmFileExists
+
+# --> check the technical writing for various characteristics
+writing/reflection.md:
+    ConfirmFileExists
+    CountFileWords --count 300
+    CountMarkdownTags --tag "heading" --count 8 --exact
+    CountMarkdownTags --tag "code_block" --count 4
+    CountMarkdownTags --tag "code" --count 1
+    MatchFileFragment --fragment "Add Your Name Here" --count 0 --exact
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+
+# --> check that the number of commits in the Git repository is beyond a threshold
+CountCommits --count 5
+
+# --> run the htmlhint linter and ensure that it runs without error
+ExecuteCommand --command "htmlhint src/www/*.html"
+CountCommandOutput --command "htmlhint src/www/*.html" --count 1 --exact
